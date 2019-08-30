@@ -8,6 +8,7 @@ public class EmployeeMangement {
 	private static ArrayList<Employee> ea=new ArrayList<>();
 	private static HashMap<String, ArrayList<Employee>> h=new HashMap<>();
 	
+	
 	private static int createEno() {
 		if(!ea.isEmpty())
 			return ea.get(ea.size()-1).getEno()+1;
@@ -15,7 +16,7 @@ public class EmployeeMangement {
 			return 1;
 	}
 	
-	
+//	Add Employee
 	static void addEmployee(Employee e) {
 		e.setEno(createEno());
 		ea.add(e);
@@ -23,7 +24,7 @@ public class EmployeeMangement {
 		System.out.println("Your Employee Id ="+e.getEno());
 	}
 	
-	
+//	View All Employees
 	static void viewAllEmployees() {
 		ListIterator<Employee> it=ea.listIterator();
 		System.out.println("Employeeno   \tName \t\tSalary \tDesignation \tDepartment");
@@ -33,7 +34,7 @@ public class EmployeeMangement {
 		}
 	}
 	
-	
+//	Remove Employee
 	static void removeEmployee(int id) {
 		Employee e=searchEmployee(id);
 		if(e!=null) {
@@ -48,6 +49,8 @@ public class EmployeeMangement {
 	static void clearData() {
 		ea.clear();
 	}
+	
+//	Change Salary
 	static void changeSalary(int id,int sal) {
 		Employee e=searchEmployee(id);
 		
@@ -62,6 +65,7 @@ public class EmployeeMangement {
 		
 	}
 	
+//	Search Employee
 	static Employee searchEmployee(int id) {
 		ListIterator<Employee> it=ea.listIterator();
 		while(it.hasNext()) {
