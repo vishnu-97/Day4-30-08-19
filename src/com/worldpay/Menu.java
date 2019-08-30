@@ -64,14 +64,15 @@ public class Menu {
 				break;
 			}
 			case 7:{
-				System.out.print("Department="); 
-				in.nextLine();
-				
-				String dep=in.nextLine();
-				EmployeeMangement.viewDepartmentWise(dep);
+//				System.out.print("Department="); 
+//				in.nextLine();
+//				
+//				String dep=in.nextLine();
+				EmployeeMangement.viewDepartmentWise();
 				break;
 			}
 			case 8:{
+				in.close();
 				System.exit(0);
 			}
 			}	

@@ -7,18 +7,12 @@ import java.util.ListIterator;
 public class EmployeeMangement {
 	private static ArrayList<Employee> ea=new ArrayList<>();
 	private static HashMap<String, ArrayList<Employee>> h=new HashMap<>();
+	private static int no=0;
 	
-	
-	private static int createEno() {
-		if(!ea.isEmpty())
-			return ea.get(ea.size()-1).getEno()+1;
-		else
-			return 1;
-	}
 	
 //	Add Employee
 	static void addEmployee(Employee e) {
-		e.setEno(createEno());
+		e.setEno(++no);
 		ea.add(e);
 		addToDepartment(e);
 		System.out.println("Your Employee Id ="+e.getEno());
@@ -45,7 +39,7 @@ public class EmployeeMangement {
 			System.out.println("Invalid EmployeeNo");
 		}
 	}
-
+//Clear Data
 	static void clearData() {
 		ea.clear();
 	}
@@ -79,23 +73,23 @@ public class EmployeeMangement {
 	
 //	add employee to department map
 	static void addToDepartment(Employee e) {
-		if(!h.containsKey(e.getDepartment())) {
-
-			h.put(e.getDepartment(), new ArrayList<>());
-			
+		if(!h.containsKey(e.getDepartment().toLowerCase())) {
+			h.put(e.getDepartment().toLowerCase(), new ArrayList<>());
 		}
-		h.get(e.getDepartment()) .add(e);
+		h.get(e.getDepartment().toLowerCase()) .add(e);
 	}
 //	department search
-	static void viewDepartmentWise(String a) {
+	static void viewDepartmentWise() {
 		System.out.println("Employeeno   \tName \t\tSalary \tDesignation \tDepartment");
+		for(String a:h.keySet()) {
 		
+			System.out.println(a+":");
 			ListIterator<Employee> it=h.get(a).listIterator();
 			while(it.hasNext()) {
 				Employee e=it.next();
 				System.out.println(e.getEno() + " \t\t" + e.getEname()+ " \t\t" + e.getSalary() + " \t" + e.getDesignation()+ " \t\t"+e.getDepartment());
 				
 			}
-		
+		}
 	}
 }
